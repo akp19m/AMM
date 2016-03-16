@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+     AAAAAAAKKK     KKKKPPPPPPPPPP      111  99999999
+    AAAAAAAAKKK    KKK  PPPPPPPPPPPP  11111 9999999999
+   AAAA AAAAKKK  KKKK   PPP      PPPP 111119999    9999
+  AAAA   AAAKKK KKK     PPP       PPP   111999      999
+ AAAA    AAAKKKKKK      PPP      PPPP   1119999    9999
+AAAA     AAAKKKKKK      PPPPPPPPPPPP    111 99999999999
+AAAAAAAAAAAAKKK KKK     PPPPPPPPPP      111  9999999999
+AAAAAAAAAAAAKKK  KKK    PPP             111        9999
+AAA      AAAKKK   KKK   PPP             111        9999
+AAA      AAAKKK    KKK  PPP             111       9999
+AAA      AAAKKK     KKK PPP             111     9999
+AAA      AAAKKK      KKKPPP           111111199999
+-->
+<html>
+    <head>
+        <title>Venditore</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Angelo Pili">
+        <meta name="description" content="pag vista venditore">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <nav>
+            <a href='login.html'>vai a 'login'</a><br/>
+            <a href='descrizione.html'>vai a 'descrizione'</a><br/>
+        </nav>
+        <h1>Venditore</h1>
+        <p>Aggiungi un nuovo oggetto</p>
+        <form action="" method="post">
+            <label for="name">Nome oggetto</label>
+            <input type="text" name="name" id="name" value="Inserire nome oggetto"/><br/>
+            <label for="img">Immagine</label>
+            <input type="file" name="img" id="img"/><br/>
+            <label for="description">Descrizione oggetto</label>
+            <textarea rows="2" cols="25" name="description" id="description">Descrizione oggetto</textarea><br/>
+            <label for="qnt">Quantità oggetto</label>
+            <input type="number" name="qnt" id="qnt" value="0"/><br/>
+            <label for="prezzo">prezzo oggetto</label>
+            <input type="number" name="prezzo" id="prezzo" value="0"/>£<br/>
+            <input type="submit" value="Inserisci nuovo oggetto">
+        </form>
+    </body>
+</html>
