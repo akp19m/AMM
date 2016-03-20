@@ -33,13 +33,24 @@ AAA      AAAKKK      KKKPPP           111111199999
             <input type="text" name="name" id="name" value="Inserire nome oggetto"/><br/>
             <label for="img">Immagine</label>
             <input type="file" name="img" id="img"/><br/>
+            <!--selezione tipo-->
+            <label for="cd">CD</label>
+            <input type="radio" name="tipo" id="cd" value="CD"/><br/>
+            <label for="vyn">Vinile</label>
+            <input type="radio" name="tipo" id="vyn" value="Vinile"/><br/>
+            <label for="mp3">MP3</label>
+            <input type="radio" name="tipo" id="mp3" value="MP3"/><br/>
             <label for="description">Descrizione oggetto</label>
-            <textarea rows="2" cols="25" name="description" id="description">Descrizione oggetto</textarea><br/>
+            <textarea rows="2" cols="20" name="description" id="description">Descrizione oggetto</textarea><br/>
+            
             <label for="qnt">Quantità oggetto</label>
             <input type="number" name="qnt" id="qnt" value="0"/><br/>
-            <label for="prezzo">prezzo oggetto</label>
-            <input type="number" name="prezzo" id="prezzo" value="0"/>£<br/>
-            <input type="submit" value="Inserisci nuovo oggetto">
+            <label for="prezzo">prezzo oggetto £.</label>
+            <input type="number" name="prezzo" id="prezzo" value="0"/><br/>
+            <div>
+            <input type="submit" value="Aggiungi oggetto">
+            <input type="reset" value="reset">
+            </div>
         </form>
     </body>
 </html>
