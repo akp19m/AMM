@@ -27,7 +27,6 @@ th, td {
 tr:nth-child(even){
     background-color:  #e6e6e6;
 }
-
 /** proprietà dei link**/
 a:link{
     text-decoration: none;
@@ -101,6 +100,17 @@ input[type=reset]:hover{
       padding-right: 20px;
       margin: 0px;
     }
+    table{
+        table-layout:fixed;
+        width: 100%;  
+    }
+    img{
+        width: 35px;
+        height: 35px;
+    }
+    td, th{
+        font-size: 14px;
+    }
     input[type=text], input[type=password], input[type=number], input[type=file], textarea, select{
     width: 85%;
     }
@@ -115,14 +125,16 @@ input[type=reset]:hover{
         padding-right: 20px;
         margin: 0px;
         font-size: calc(300%);
-    } 
+    }
+    table{
+        table-layout:fixed;
+        width: 98%;  
+    }
     #sidebar1 {
         float: left;
         width: 200px;
         padding-left: 5px;
         padding-right: 10px;
-    }
-    #sidebar1 {
         border: solid;
         border-color: #f2f2f2;
         float: left;
