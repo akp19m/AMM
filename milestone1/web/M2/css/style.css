@@ -55,7 +55,6 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus{
     background-image: url("../img/vinile.png");
     background-position: right;
     background-repeat: no-repeat;
-    background-size: calc(12%);
 }
 h1, h2, h3{
     color: #1c345a;
@@ -92,13 +91,13 @@ input[type=reset]:hover{
 /*schermi sino a 480*/
 @media only screen and (max-width: 480px){
     header, #footer{
-      font-size: 47px;
-      padding: 10px;
-      min-height: 50px;
-      position: relative;
-      padding-left: 20px;
-      padding-right: 20px;
-      margin: 0px;
+        font-size: 47px;
+        padding: 10px;
+        min-height: 50px;
+        position: relative;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 0px;
     }
     table{
         table-layout:fixed;
@@ -112,19 +111,23 @@ input[type=reset]:hover{
         font-size: 14px;
     }
     input[type=text], input[type=password], input[type=number], input[type=file], textarea, select{
-    width: 85%;
+        width: 85%;
     }
-   }
+    #logo{
+        background-size: 170px;
+    }
+}
 /*schermi da 480 sino a 1024*/
 @media only screen and (min-width: 480px) and (max-width: 1024px){   
     header, #footer{
         padding: 10px;
         min-height: 50px;
         position: relative;
-        padding-left: 20px;
         padding-right: 20px;
         margin: 0px;
-        font-size: calc(300%);
+        height: 142px;
+        padding-left: 34px;
+        font-size: 3em;
     }
     table{
         table-layout:fixed;
@@ -154,7 +157,10 @@ input[type=reset]:hover{
         margin-right: 25px;
         padding-bottom: 10px;
     }
+    #logo{
+        background-size: 170px;
     }
+}
 /*schermi da 1024 in poi*/
 @media only screen and (min-width: 1024px) {
     #pag{
@@ -191,10 +197,15 @@ input[type=reset]:hover{
     }
 
     header, #footer{
-        height: 120px;
+        height: 142px;
         position: relative;
-        width: 993px;
-        font-size: calc(300%);
+        width: 962px;
+        padding-left: 34px;
+        font-size: 3em;
+
+    }
+    #logo{
+        background-size: 145px;
     }
 }
 
