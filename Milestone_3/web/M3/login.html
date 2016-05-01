@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Angelo Pili">
+        <meta name="description" content="pag di login al sito">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="screen"/>
+    </head>
+    <body>
+        <div id="pag">
+            <header id="logo">
+                <p>EUTERPE</p>   
+            </header>
+            <!-- sezione di navigazione-->
+            <nav id="sidebar2"><a href='cliente.html'>vai a 'cliente'</a><br/>
+                <a href='venditore.html'>vai a 'venditore'</a><br/>
+                <a href='descrizione.html'>vai a 'descrizione'</a><br/>
+            </nav>
+            <div id="content">
+                <h1>Login</h1>
+                <!--dovrò cambiare l'action e il method-->
+                <form>
+                    <label for="user">Username</label>
+                    <input type="text" name="user" id="user" value="username"/><br/>
+                    <label for="pass">Password</label>
+                    <input type="password" name="password" id="pass" value="cinciallegra"/><br/>
+                    <input type="submit" value="login"/>
+                </form> 
+            </div>
+            <div id="footer">
+                <a href='#top'><img title="up" alt="up" src="img/up.png" width="30" height="30"></a>
+            </div>
+        </div>
+    </body>
+</html>
