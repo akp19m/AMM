@@ -11,25 +11,26 @@ import java.util.ArrayList;
  *
  * @author Pili
  */
-public class Factory {
+public class MoosecaFactory {
 
-    private static Factory singleton;
+    private static MoosecaFactory singleton;
 
-    public static Factory getInstance() {
+    public static MoosecaFactory getInstance() {
         if (singleton == null) {
-            singleton = new Factory();
+            singleton = new MoosecaFactory();
         }
         return singleton;
     }
 
+    // Lista Materie
+    private ArrayList<Mooseca> listaMusica = new ArrayList<>();
+    // Lista Venditori
+    private ArrayList<UsersVend> listaVenditori = new ArrayList<>();
+    // Lista Clienti
+    private ArrayList<UsersClient> listaClienti = new ArrayList<>();
+
     /* Costruttore */
-    private Factory() {
-
-    }
-
-    public ArrayList<Mooseca> getCatalogoTot() {
-        ArrayList<Mooseca> catalogotot = new ArrayList<>();
-
+    private MoosecaFactory() {
         // album 1         
         Mooseca album_1 = new Mooseca();
         album_1.setNomeOgg("Black Album");
@@ -38,7 +39,7 @@ public class Factory {
         album_1.setQuantità(19);
         album_1.setPrezzo(10);
         album_1.setCodice(1);
-        catalogotot.add(album_1);
+        listaMusica.add(album_1);
 
         // album 2         
         Mooseca album_2 = new Mooseca();
@@ -48,7 +49,7 @@ public class Factory {
         album_2.setQuantità(19);
         album_2.setPrezzo(10);
         album_2.setCodice(2);
-        catalogotot.add(album_2);
+        listaMusica.add(album_2);
 
         // album 3         
         Mooseca album_3 = new Mooseca();
@@ -58,7 +59,7 @@ public class Factory {
         album_3.setQuantità(19);
         album_3.setPrezzo(10);
         album_3.setCodice(3);
-        catalogotot.add(album_3);
+        listaMusica.add(album_3);
 
         // album 4         
         Mooseca album_4 = new Mooseca();
@@ -68,7 +69,7 @@ public class Factory {
         album_4.setQuantità(19);
         album_4.setPrezzo(10);
         album_4.setCodice(4);
-        catalogotot.add(album_4);
+        listaMusica.add(album_4);
 
         // album 5       
         Mooseca album_5 = new Mooseca();
@@ -78,7 +79,7 @@ public class Factory {
         album_5.setQuantità(19);
         album_5.setPrezzo(10);
         album_5.setCodice(5);
-        catalogotot.add(album_5);
+        listaMusica.add(album_5);
 
         // Venditore 1
         UsersVend vend = new UsersVend();
@@ -92,6 +93,7 @@ public class Factory {
         arrayCatalogo.add(album_2);
         arrayCatalogo.add(album_5);
         vend.setCatalogo(arrayCatalogo);
+        listaVenditori.add(vend);
 
         // Venditore 2
         UsersVend vend2 = new UsersVend();
@@ -104,6 +106,7 @@ public class Factory {
         arrayCatalogo2.add(album_3);
         arrayCatalogo2.add(album_4);
         vend2.setCatalogo(arrayCatalogo2);
+        listaVenditori.add(vend2);
 
         // Cliente
         UsersClient cliente = new UsersClient();
@@ -112,7 +115,39 @@ public class Factory {
         cliente.setCognome("Pili");
         cliente.setUsername("akp19");
         cliente.setPassword("mittlaprima");
+        listaClienti.add(cliente);
 
-        return catalogotot;
     }
+    /* Metodi */
+
+    public ArrayList<UsersVend> getVenditori() {
+        return listaVenditori;
+    }
+
+    public UsersVend getVenditori(int id) {
+        for (UsersVend u : listaVenditori) {
+            if (u.id == id) {
+                return u;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<UsersClient> getClient() {
+        return listaClienti;
+    }
+
+    public UsersClient getClient(int id) {
+        for (UsersClient u : listaClienti) {
+            if (u.id == id) {
+                return u;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Mooseca> getMusica() {
+        return listaMusica;
+    }
+
 }
