@@ -26,12 +26,13 @@ and open the template in the editor.
             <div id="content">
                 <h1>Login</h1>
                 <!--dovrò cambiare l'action e il method-->
-                <form>
+                <form method="post" action="Login">
+                    <input type="hidden" name="cmd" value="login">
                     <label for="user">Username</label>
                     <input type="text" name="user" id="user" value="username"/><br/>
                     <label for="pass">Password</label>
                     <input type="password" name="password" id="pass" value="cinciallegra"/><br/>
-                    <input type="submit" value="login"/>
+                    <input type="submit" value="Login"/>
                 </form> 
             </div>
             <div id="footer">
