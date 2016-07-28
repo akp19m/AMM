@@ -241,8 +241,7 @@ public class MoosecaFactory {
                     
                     return venditore;
                 }
-                
-                // Studente
+
                 // sql command
                 query = "select * from utente where password = ? and username = ? and venditore = false";
                 stmt = conn.prepareStatement(query);
