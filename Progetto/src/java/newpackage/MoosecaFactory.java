@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class MoosecaFactory {
 
-    private String connectionString;
+    String connectionString = "";
 
     private static MoosecaFactory singleton;
 
@@ -39,7 +39,7 @@ public class MoosecaFactory {
         return this.connectionString;
     }
 
-    // Lista Materie
+    // Lista Musica
     //private ArrayList<Mooseca> listaMusica = new ArrayList<>();
     // Lista Venditori
     //private ArrayList<Users> listaVenditori = new ArrayList<>();
@@ -48,96 +48,54 @@ public class MoosecaFactory {
 
     /* Costruttore */
     private MoosecaFactory() {
-        /*
-         // Venditore 1
-         UsersVend vend = new UsersVend();
-         vend.setId(1);
-         vend.setNome("Leonardo");
-         vend.setCognome("Bonucci");
-         vend.setUsername("lb19");
-         vend.setPassword("0");
-         vend.getConto().setConto(300);
-         listaVenditori.add(vend);
-
-         // Venditore 2
-         UsersVend vend2 = new UsersVend();
-         vend2.setId(2);
-         vend2.setNome("Jamie");
-         vend2.setCognome("Vardy");
-         vend2.setUsername("jv9");
-         vend2.setPassword("0");
-         vend2.getConto().setConto(300);
-         listaVenditori.add(vend2);
-
-         // album 1         
-         Mooseca album_1 = new Mooseca();
-         album_1.setNomeOgg("Black Album");
-         album_1.setCoverLink("blackalbum.jpg");
-         album_1.setTipo("CD");
-         album_1.setAutore("Metallica");
-         album_1.setQuantità(19);
-         album_1.setPrezzo(10);
-         album_1.setCodice(1);
-         album_1.setVend(vend);
-         listaMusica.add(album_1);
-
-         // album 2         
-         Mooseca album_2 = new Mooseca();
-         album_2.setNomeOgg("Mesmerize");
-         album_2.setCoverLink("soadm.jpg");
-         album_2.setTipo("CD");
-         album_2.setAutore("System of a down");
-         album_2.setQuantità(19);
-         album_2.setPrezzo(10);
-         album_2.setCodice(2);
-         album_2.setVend(vend);
-         listaMusica.add(album_2);
-
-         // album 3         
-         Mooseca album_3 = new Mooseca();
-         album_3.setNomeOgg("Rosenrot");
-         album_3.setCoverLink("rosenrot.jpg");
-         album_3.setTipo("CD");
-         album_3.setAutore("Rammstein");
-         album_3.setQuantità(19);
-         album_3.setPrezzo(10);
-         album_3.setCodice(3);
-         album_3.setVend(vend);
-         listaMusica.add(album_3);
-
-         // album 4         
-         Mooseca album_4 = new Mooseca();
-         album_4.setNomeOgg("Tra la via Emila e il West");
-         album_4.setCoverLink("viaem.jpg");
-         album_4.setTipo("Vinile");
-         album_4.setAutore("Guccini");
-         album_4.setQuantità(19);
-         album_4.setPrezzo(10);
-         album_4.setCodice(4);
-         album_4.setVend(vend2);
-         listaMusica.add(album_4);
-
-         // album 5       
-         Mooseca album_5 = new Mooseca();
-         album_5.setNomeOgg("Elettrico");
-         album_5.setCoverLink("elettrico.jpg");
-         album_5.setTipo("MP3");
-         album_5.setAutore("Rancore");
-         album_5.setQuantità(19);
-         album_5.setPrezzo(10);
-         album_5.setCodice(5);
-         album_5.setVend(vend2);
-         listaMusica.add(album_5);
-
-         // Cliente
-         UsersClient cliente = new UsersClient();
-         cliente.setId(3);
-         cliente.setNome("Angelo");
-         cliente.setCognome("Pili");
-         cliente.setUsername("akp19");
-         cliente.setPassword("0");
-         cliente.getConto().setConto(300);
-         listaClienti.add(cliente);
+        /**
+         * // Venditore 1 UsersVend vend = new UsersVend(); vend.setId(1);
+         * vend.setNome("Leonardo"); vend.setCognome("Bonucci");
+         * vend.setUsername("lb19"); vend.setPassword("0");
+         * vend.getConto().setConto(300); listaVenditori.add(vend);
+         *
+         * // Venditore 2 UsersVend vend2 = new UsersVend(); vend2.setId(2);
+         * vend2.setNome("Jamie"); vend2.setCognome("Vardy");
+         * vend2.setUsername("jv9"); vend2.setPassword("0");
+         * vend2.getConto().setConto(300); listaVenditori.add(vend2);
+         *
+         * // album 1 Mooseca album_1 = new Mooseca();
+         * album_1.setNomeOgg("Black Album");
+         * album_1.setCoverLink("blackalbum.jpg"); album_1.setTipo("CD");
+         * album_1.setAutore("Metallica"); album_1.setQuantità(19);
+         * album_1.setPrezzo(10); album_1.setCodice(1); album_1.setVend(vend);
+         * listaMusica.add(album_1);
+         *
+         * // album 2 Mooseca album_2 = new Mooseca();
+         * album_2.setNomeOgg("Mesmerize"); album_2.setCoverLink("soadm.jpg");
+         * album_2.setTipo("CD"); album_2.setAutore("System of a down");
+         * album_2.setQuantità(19); album_2.setPrezzo(10); album_2.setCodice(2);
+         * album_2.setVend(vend); listaMusica.add(album_2);
+         *
+         * // album 3 Mooseca album_3 = new Mooseca();
+         * album_3.setNomeOgg("Rosenrot"); album_3.setCoverLink("rosenrot.jpg");
+         * album_3.setTipo("CD"); album_3.setAutore("Rammstein");
+         * album_3.setQuantità(19); album_3.setPrezzo(10); album_3.setCodice(3);
+         * album_3.setVend(vend); listaMusica.add(album_3);
+         *
+         * // album 4 Mooseca album_4 = new Mooseca(); album_4.setNomeOgg("Tra
+         * la via Emila e il West"); album_4.setCoverLink("viaem.jpg");
+         * album_4.setTipo("Vinile"); album_4.setAutore("Guccini");
+         * album_4.setQuantità(19); album_4.setPrezzo(10); album_4.setCodice(4);
+         * album_4.setVend(vend2); listaMusica.add(album_4);
+         *
+         * // album 5 Mooseca album_5 = new Mooseca();
+         * album_5.setNomeOgg("Elettrico");
+         * album_5.setCoverLink("elettrico.jpg"); album_5.setTipo("MP3");
+         * album_5.setAutore("Rancore"); album_5.setQuantità(19);
+         * album_5.setPrezzo(10); album_5.setCodice(5); album_5.setVend(vend2);
+         * listaMusica.add(album_5);
+         *
+         * // Cliente UsersClient cliente = new UsersClient();
+         * cliente.setId(3); cliente.setNome("Angelo");
+         * cliente.setCognome("Pili"); cliente.setUsername("akp19");
+         * cliente.setPassword("0"); cliente.getConto().setConto(300);
+         * listaClienti.add(cliente);
          */
     }
     /* Metodi 
@@ -217,18 +175,18 @@ public class MoosecaFactory {
 
     public Users getUtente(String username, String password) {
         try {
+            Connection conn = DriverManager.getConnection(connectionString, "username", "password");
             // sql command
-            try (Connection conn = DriverManager.getConnection(connectionString, "username", "password")) {
-                // sql command
-                String query = "select * from utente where password = ? and username = ? and venditore = true";
-                PreparedStatement stmt = conn.prepareStatement(query);
-                // dati
-                stmt.setString(1, password);
-                stmt.setString(2, username);
-                //
-                ResultSet set = stmt.executeQuery();
-                
-                if (set.next()) {
+            String query = "select * from utente where username=? and password=?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // dati
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            //
+            ResultSet set = stmt.executeQuery();
+
+            if (set.next()) {
+                if (set.getBoolean("venditore")) {
                     UsersVend venditore = new UsersVend();
                     venditore.setId(set.getInt("id_utente"));
                     venditore.setNome(set.getString("nome"));
@@ -238,20 +196,9 @@ public class MoosecaFactory {
                     venditore.getConto().setConto(set.getInt("conto"));
                     stmt.close();
                     conn.close();
-                    
                     return venditore;
-                }
+                } else {
 
-                // sql command
-                query = "select * from utente where password = ? and username = ? and venditore = false";
-                stmt = conn.prepareStatement(query);
-                // dati
-                stmt.setString(1, password);
-                stmt.setString(2, username);
-                //
-                set = stmt.executeQuery();
-                
-                if (set.next()) {
                     UsersClient cliente = new UsersClient();
                     cliente.setId(set.getInt("id_utente"));
                     cliente.setNome(set.getString("nome"));
@@ -259,16 +206,18 @@ public class MoosecaFactory {
                     cliente.setUsername(set.getString("username"));
                     cliente.setPassword(set.getString("password"));
                     cliente.getConto().setConto(set.getInt("conto"));
-                    
+
                     stmt.close();
                     conn.close();
                     return cliente;
+
                 }
-                
-                stmt.close();
             }
+
+            stmt.close();
+            conn.close();
         } catch (SQLException e) {
-            
+            e.printStackTrace();
         }
         return null;
     }
@@ -306,7 +255,7 @@ public class MoosecaFactory {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "username", "password");
             // Query
-            String query = "select * from utente where id = ? and venditore = true";
+            String query = "select * from utente where id_utente = ? and venditore = true";
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             // Si associano i valori
@@ -347,7 +296,7 @@ public class MoosecaFactory {
             // ciclo sulle righe restituite
             while (set.next()) {
                 UsersClient current = new UsersClient();
-                current.setId(set.getInt("id_utenete"));
+                current.setId(set.getInt("id_utente"));
                 current.setNome(set.getString("nome"));
                 current.setCognome(set.getString("cognome"));
                 current.setUsername(set.getString("username"));
@@ -368,7 +317,7 @@ public class MoosecaFactory {
         try {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "username", "password");
-            String query = "select * from utente where id = ? and venditore= false";
+            String query = "select * from utente where id_utente = ? and venditore= false";
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             // Si associano i valori
@@ -399,6 +348,39 @@ public class MoosecaFactory {
         return null;
     }
 
+    public void carica(int utente, int sossoldi) {
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "username", "password");
+
+            String pagamento = "update utente set conto = ? where id_utente =?";
+            PreparedStatement contocliente = conn.prepareStatement(pagamento);
+
+            UsersClient client = getClientPerId(utente);
+            Conto saldoclient = client.getConto();
+            saldoclient.setAccredito(sossoldi);
+
+            saldoclient = client.getConto();
+            int saldo = saldoclient.getConto();
+                    
+            contocliente.setInt(1, saldo);
+            contocliente.setInt(2, utente);
+
+            int set = contocliente.executeUpdate();
+
+            if (set != 1) {
+                conn.rollback();
+            }
+
+            conn.commit();
+            contocliente.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     // lista utenti
     public ArrayList<Users> getUserList() {
         ArrayList<Users> listaUtenti = new ArrayList<>();
@@ -427,7 +409,6 @@ public class MoosecaFactory {
                 current.setCoverLink(set.getString("coverlink"));
                 current.setTipo(set.getString("tipo"));
                 current.setAutore(set.getString("autore"));
-                current.setQuantità(set.getInt("quantita"));
                 current.setPrezzo(set.getInt("prezzo"));
                 //settaggio venditore
                 int id_vend = set.getInt("id_vend");
@@ -449,7 +430,7 @@ public class MoosecaFactory {
         try {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "username", "password");
-            String query = "select * from album where nome = ?";
+            String query = "select * from album where nome_album = ?";
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             // Si associano i valori
@@ -464,7 +445,6 @@ public class MoosecaFactory {
                 current.setCoverLink(set.getString("coverlink"));
                 current.setTipo(set.getString("tipo"));
                 current.setAutore(set.getString("autore"));
-                current.setQuantità(set.getInt("quantita"));
                 current.setPrezzo(set.getInt("prezzo"));
                 //settaggio venditore
                 int id_vend = set.getInt("id_vend");
@@ -500,7 +480,6 @@ public class MoosecaFactory {
                 current.setCoverLink(set.getString("coverlink"));
                 current.setTipo(set.getString("tipo"));
                 current.setAutore(set.getString("autore"));
-                current.setQuantità(set.getInt("quantita"));
                 current.setPrezzo(set.getInt("prezzo"));
                 //settaggio venditore
                 int id_vend = set.getInt("id_vend");
@@ -536,7 +515,6 @@ public class MoosecaFactory {
                 current.setCoverLink(set.getString("coverlink"));
                 current.setTipo(set.getString("tipo"));
                 current.setAutore(set.getString("autore"));
-                current.setQuantità(set.getInt("quantita"));
                 current.setPrezzo(set.getInt("prezzo"));
                 //settaggio venditore
                 int id_vend = set.getInt("id_vend");
@@ -556,7 +534,7 @@ public class MoosecaFactory {
         try {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "username", "password");
-            String query = "select * from album where id = ?";
+            String query = "select * from album where id_album = ?";
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
             // Si associano i valori
@@ -571,7 +549,6 @@ public class MoosecaFactory {
                 current.setCoverLink(set.getString("coverlink"));
                 current.setTipo(set.getString("tipo"));
                 current.setAutore(set.getString("autore"));
-                current.setQuantità(set.getInt("quantita"));
                 current.setPrezzo(set.getInt("prezzo"));
                 //settaggio venditore
                 int id_vend = set.getInt("id_vend");
@@ -588,5 +565,109 @@ public class MoosecaFactory {
         return null;
     }
 
-    //SONO ARRIVATO QUI
+    public void aggiungiAlbum(Mooseca newAlbum) {
+        try {
+
+            Connection conn = DriverManager.getConnection(connectionString, "username", "password");
+            String insertAlbum = "insert into album (id_album, nome_album, coverlink, tipo, autore, prezzo, id_vend) values (default,?,?,?,?,?,?)";
+            PreparedStatement newalbum = conn.prepareStatement(insertAlbum);
+
+            newalbum.setString(1, newAlbum.getNomeOgg());
+            newalbum.setString(2, newAlbum.getCoverLink());
+            newalbum.setString(3, newAlbum.getTipo());
+            newalbum.setString(4, newAlbum.getAutore());
+            newalbum.setInt(5, newAlbum.getPrezzo());
+            newalbum.setInt(6, newAlbum.getVend().getId());
+
+            int set = newalbum.executeUpdate();
+
+            if (set != 1) {
+                conn.rollback();
+            }
+
+            conn.commit();
+            newalbum.close();
+            conn.close();
+        } catch (SQLException e) {
+
+        }
+
+    }
+
+    public void acquisto(int id_cliente, int idAlbum) throws SQLException {
+        Connection conn = DriverManager.getConnection(connectionString, "username", "password");
+
+        PreparedStatement aggiornaLista = null;
+        PreparedStatement contocliente = null;
+        PreparedStatement contovenditore = null;
+        // Sql 
+        Mooseca acquisto = getMusicaId(idAlbum);
+        UsersVend vend = getVenditorePerId(acquisto.getVend().getId());
+        UsersClient client = getClientPerId(id_cliente);
+
+        Conto saldoclient = client.getConto();
+        Conto saldovend = vend.getConto();
+
+        Boolean ok = saldoclient.itsOk(acquisto.getPrezzo());
+
+        if (ok) {
+            saldoclient.pagamento(acquisto.getPrezzo());
+            saldovend.setAccredito(acquisto.getPrezzo());
+        }
+
+        String togliAlbum = "delete from album where id_album = ?";
+        String pagamento = "update utente set conto = ? where id_utente =?";
+        String accredito = "update utente set conto = ? where id_utente =?";
+        //itsOk(prezzo) setAccredito(pagamento) pagamento(prezzo)
+        try {
+            conn.setAutoCommit(false);
+            aggiornaLista = conn.prepareStatement(togliAlbum);
+            contocliente = conn.prepareStatement(pagamento);
+            contovenditore = conn.prepareStatement(accredito);
+
+            aggiornaLista.setInt(1, idAlbum);
+
+            contocliente.setInt(1, saldoclient.getConto());
+            contocliente.setInt(2, id_cliente);
+
+            contovenditore.setInt(1, saldovend.getConto());
+            contovenditore.setInt(2, vend.getId());
+
+            //int c1;
+            //c1 = aggiornaLista.executeUpdate();
+            int c2;
+            c2 = contocliente.executeUpdate();
+            int c3;
+            c3 = contovenditore.executeUpdate();
+            // uso la variabile ok per vedere se gli aggiornamenti sono effettvi c1 != 1 || 
+            if (c2 != 1 || c3 != 1 || (ok != true)) {
+                conn.rollback();
+            }
+            conn.commit();
+        } catch (SQLException e) {
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+
+            }
+            try {
+                conn.rollback();
+            } catch (SQLException e2) {
+
+            }
+        } finally {
+            if (aggiornaLista != null) {
+                aggiornaLista.close();
+            }
+            if (contocliente != null) {
+                contocliente.close();
+            }
+            if (contovenditore != null) {
+                contovenditore.close();
+            }
+
+            conn.setAutoCommit(true);
+            conn.close();
+        }
+    }
 }

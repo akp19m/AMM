@@ -6,6 +6,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,13 +38,31 @@ public class ClientServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-        
-        ArrayList<Mooseca> listaMusica = MoosecaFactory.getInstance().getMusica();
+
+        session.setAttribute("listaMusica", MoosecaFactory.getInstance().getMusica());
         //session.setAttribute("listaMusica", listaMusica);
         //ArrayList<Mooseca> listaMusica = (ArrayList<Mooseca>) session.getAttribute("listaMusica");
-        
+
         if (session.getAttribute("loggedClient") != null && request.getParameter("submit") != null) {
             request.getRequestDispatcher("cliente.jsp").forward(request, response);
+
+            //ricarica_conto 
+        } else if (session.getAttribute("loggedClient") != null && request.getParameter("acconto") != null) {
+
+            Users utente = (Users) session.getAttribute("cliente");
+            Integer id = utente.getId();
+            int soldi = Integer.parseInt(request.getParameter("ricarica"));
+            //utente = MoosecaFactory.getInstance().getClientPerId(id);        
+            if (soldi > 0) {
+
+                MoosecaFactory.getInstance().carica(id, soldi);
+                request.setAttribute("accredito", "Accredito effettuato");
+                request.getRequestDispatcher("cliente.jsp").forward(request, response);
+            } else {
+                request.setAttribute("accredito", "Accredito non effettuato");
+                request.getRequestDispatcher("cliente.jsp").forward(request, response);
+            }
+
         } else if (session.getAttribute("loggedClient") != null && request.getParameter("codAcquisto") != null) {
             int idAlbum = Integer.parseInt(request.getParameter("codAcquisto"));
             try {
@@ -58,7 +77,7 @@ public class ClientServlet extends HttpServlet {
                     name = name.replaceAll(" ", "+");
                     autor = autor.replaceAll(" ", "+");
                     // imposto una variabile carrello che contiene i dati per la visualizzazione
-                    request.setAttribute("carrello", "<div>\n" + "<a href=\"cliente.html?nomeAlbum=" + name + "&tipoAlbum=" + album_acquisto.getTipo() + "&prezzoAlbum=" + album_acquisto.getPrezzo() + "&autoreAlbum=" + autor + "\">" + "<input type=\"submit\" id=\"acquista\" name=\"acquista\" value=\"Acquista\"/></div>");
+                    request.setAttribute("carrello", "<div>\n" + "<a href=\"cliente.html?nomeAlbum=" + name + "&tipoAlbum=" + album_acquisto.getTipo() + "&prezzoAlbum=" + album_acquisto.getPrezzo() + "&autoreAlbum=" + autor + "&album=" +album_acquisto.getCodice() + "\">" + "<input type=\"submit\" id=\"acquista\" name=\"acquista\" value=\"Acquista\"/></div>");
 
                     request.getRequestDispatcher("riepilogo.jsp").forward(request, response);
                 }
@@ -69,17 +88,18 @@ public class ClientServlet extends HttpServlet {
             Users utente = (Users) session.getAttribute("cliente");
             Integer conto = utente.getConto().getConto();
             Integer prezzo = Integer.parseInt(request.getParameter("prezzoAlbum"));
-            
-            Mooseca album = (Mooseca) request.getAttribute("album");
-           
+
+            //Mooseca album = (Mooseca) request.getAttribute("album");
+            Mooseca album = MoosecaFactory.getInstance().getMusicaId(Integer.parseInt(request.getParameter("album")));
+            try {
+                MoosecaFactory.getInstance().acquisto(utente.getId(), album.getCodice());
+            } catch (SQLException e) {
+            }
+
             if (conto < prezzo) {
                 request.setAttribute("messaggio", "Attenzione, il suo saldo non è sufficiente per complettare l'acquisto dell'album: " + request.getParameter("nomeAlbum") + " di " + request.getParameter("autoreAlbum"));
             } else {
-                Integer resto = conto - prezzo;
-                request.setAttribute("messaggio", "Il suo acquisto è andato a buon fine: " + request.getParameter("nomeAlbum") + " di " + request.getParameter("autoreAlbum") + ". Il suo saldo residuo è di " + resto + " £.");
-                utente.getConto().setConto(resto);
-                
-                listaMusica.remove(album);
+                request.setAttribute("messaggio", "Il suo acquisto è andato a buon fine: " + request.getParameter("nomeAlbum") + " di " + request.getParameter("autoreAlbum") + ". Il suo saldo residuo è di " + utente.getConto().getConto() + " £.");
             }
             request.getRequestDispatcher("acquisto_confermato.jsp").forward(request, response);
         } else if (session.getAttribute("loggedClient") != null) {

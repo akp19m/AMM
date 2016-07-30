@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="shortcut icon" href="img/vinyl_blue.ico">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Album Inserito Correttamente</title>
         <meta name="author" content="Angelo Pili">
@@ -26,13 +27,13 @@
                         ${venditore.nome} ${venditore.cognome}
                     </p>
                 </div>
-                    <h2>Riepilogo</h2>
+                <h2>Riepilogo</h2>
                 <div>
                     <jsp:include page="parts/anteprima.jsp"/>
                 </div>
                 <p>Il nuovo album è stato inserito correttamente</p><br/>
                 <a href='venditore.html'>Torna a pag principale venditore</a><br/>
             </div>
-        <jsp:include page="parts/footer.jsp"/>
-    </div>
+            <jsp:include page="parts/footer.jsp"/>
+        </div>
 </html>

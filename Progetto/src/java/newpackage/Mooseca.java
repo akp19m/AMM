@@ -16,7 +16,6 @@ public class Mooseca {
     private String coverLink;
     private String tipo;
     private String autore;
-    private int quantità;
     private int prezzo;
     private UsersVend vend;
 
@@ -60,22 +59,6 @@ public class Mooseca {
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    /**
-     * @return the quantità
-     */
-    public int getQuantità() {
-        return quantità;
-    }
-
-    /**
-     * @param quantità the quantità to set
-     */
-    public void setQuantità(int quantità) {
-        if (quantità > 0) {
-            this.quantità = quantità;
-        }
     }
 
     /**

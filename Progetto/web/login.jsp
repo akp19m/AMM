@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="shortcut icon" href="img/vinyl_blue.ico">
         <meta name="author" content="Angelo Pili">
         <meta name="description" content="pag login">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

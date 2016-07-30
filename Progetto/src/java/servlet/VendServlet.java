@@ -67,18 +67,12 @@ public class VendServlet extends HttpServlet {
             } else {
                 newAlbum.setAutore(request.getParameter("autore"));
             }
-            
+
             if (request.getParameter("cover").equals("")) {
                 request.getRequestDispatcher("venditore.jsp").forward(request, response);
             } else {
-                
-                newAlbum.setCoverLink(request.getParameter("cover"));
-            }
 
-            if (Integer.parseInt(request.getParameter("qnt")) > 0) {
-                newAlbum.setQuantità(Integer.parseInt(request.getParameter("qnt")));
-            } else {
-                request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                newAlbum.setCoverLink(request.getParameter("cover"));
             }
 
             if (Integer.parseInt(request.getParameter("prezzo")) > 0) {
@@ -86,14 +80,18 @@ public class VendServlet extends HttpServlet {
             } else {
                 request.getRequestDispatcher("venditore.jsp").forward(request, response);
             }
-            
+
             newAlbum.setVend((UsersVend) session.getAttribute("venditore"));
 
             request.setAttribute("album", newAlbum);
 
-            ArrayList<Mooseca> listaMusica = MoosecaFactory.getInstance().getMusica();
-
-            listaMusica.add(newAlbum);
+            //ArrayList<Mooseca> listaMusica = MoosecaFactory.getInstance().getMusica();
+            //listaMusica.add(newAlbum);
+            //MI SONO ACCORTO DOPO CHE AVREI POTUTO PASSARE DIRETTAMENTE L'OGGETTO ANZICHE' I SINGOLI CAMPI
+            //MoosecaFactory.getInstance().aggiungiAlbum(newAlbum.getVend().getId(),newAlbum.getNomeOgg(),newAlbum.getTipo(),newAlbum.getAutore(),newAlbum.getCoverLink(),newAlbum.getPrezzo());         
+            MoosecaFactory.getInstance().aggiungiAlbum(newAlbum);
+            //aggiorno la lista della sessione
+            session.setAttribute("listaMusica", MoosecaFactory.getInstance().getMusica());
 
             request.getRequestDispatcher("album_inserito.jsp").forward(request, response);
 

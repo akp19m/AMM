@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
+    <link rel="shortcut icon" href="img/vinyl_blue.ico">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Acquisto Confermato</title>
     <meta name="author" content="Angelo Pili">

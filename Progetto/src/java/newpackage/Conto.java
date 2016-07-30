@@ -31,12 +31,21 @@ public class Conto {
 
     //controlla se il saldo è maggiore della spesa
     public boolean itsOk(int prezzo) {
-        return this.conto > prezzo;
+        if(this.conto >= prezzo){
+            return true;
+        }
+        return false;
     }
-    
+
     //pagamento o ricarica
-    public void setAccredito(int pagamento){
-           this.conto += pagamento;
+    public void setAccredito(int pagamento) {
+        this.conto += pagamento;
     }
-    
+
+    public void pagamento(int prezzo) {
+        if (itsOk(prezzo)) {
+            this.conto -= prezzo;       
+        }
+    }
+
 }

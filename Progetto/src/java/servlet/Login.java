@@ -25,15 +25,6 @@ import newpackage.UsersVend;
 @WebServlet(name = "Login", urlPatterns = {"/login.html"}, loadOnStartup = 0)
 public class Login extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
     private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/progetto_db";
     private static final String DB_BUILD_PATH = "WEB-INF/db/progetto_db";
@@ -49,6 +40,15 @@ public class Login extends HttpServlet {
         MoosecaFactory.getInstance().setConnectionString(dbConnection);
     }
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -68,8 +68,7 @@ public class Login extends HttpServlet {
 
                 //ArrayList<Users> listaUtenti = MoosecaFactory.getInstance().getUserList();
                 //ArrayList<Mooseca> listaMusica = MoosecaFactory.getInstance().getMusica();
-
-            //for (Users u : listaUtenti) {
+                //for (Users u : listaUtenti) {
                 //if (u.getUsername().equals(username)) {
                 //if (u.getPassword().equals(password)) {
                 //settaggio attributi della sessione
@@ -77,6 +76,7 @@ public class Login extends HttpServlet {
 
                 if (u instanceof UsersVend) {
                     session.setAttribute("venditore", u);
+                    session.setAttribute("listaMusica", MoosecaFactory.getInstance().getMusica());
                     session.setAttribute("loggedVend", true);
                     session.setAttribute("loggedClient", null);
                     request.getRequestDispatcher("venditore.jsp").forward(request, response);

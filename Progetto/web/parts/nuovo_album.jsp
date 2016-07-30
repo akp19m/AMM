@@ -19,8 +19,6 @@
     <input type="text" name="autore" id="autore"/><br/>
     <label class="titolo" for="cover">Cover</label>
     <input type="file" name="cover" id="cover"><br/>
-    <label class="titolo" for="qnt">Quantità oggetto</label>
-    <input type="number" name="qnt" id="qnt" value="0"/><br/>
     <label class="titolo" for="prezzo">Prezzo oggetto £.</label>
     <input type="number" name="prezzo" id="prezzo" value="0"/><br/>
     <div>

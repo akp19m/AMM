@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="shortcut icon" href="img/vinyl_blue.ico">
         <meta name="author" content="Angelo Pili">
         <meta name="description" content="pag vista cliente">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
         <div id="pag">
             <jsp:include page="parts/header.jsp"/>
             <jsp:include page="parts/sidebar2.jsp"/>
+            <jsp:include page="parts/ricarica_conto.jsp"/>
             <div id="content">
                 <h1>Cliente</h1>
                 <div>
