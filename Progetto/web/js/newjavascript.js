@@ -14,7 +14,7 @@ $(document).ready(function () {
                         aggiornaListaMusica(data);
                     },
                     error: function (data) {
-                        aggiornaListaMusica(data)
+                        aggiornaListaMusica(data);
                     }
                 });
         function aggiornaListaMusica(listaMusica) {
