@@ -1,6 +1,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<table>
+<table class="tab">
     <tr>
         <th>Titolo</th>
         <th>Cover</th>

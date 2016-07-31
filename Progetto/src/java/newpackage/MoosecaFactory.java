@@ -594,7 +594,7 @@ public class MoosecaFactory {
 
     }
 
-    public void acquisto(int id_cliente, int idAlbum) throws SQLException {
+    public Boolean acquisto(int id_cliente, int idAlbum) throws SQLException {
         Connection conn = DriverManager.getConnection(connectionString, "username", "password");
 
         PreparedStatement aggiornaLista = null;
@@ -625,33 +625,37 @@ public class MoosecaFactory {
             contocliente = conn.prepareStatement(pagamento);
             contovenditore = conn.prepareStatement(accredito);
 
-            aggiornaLista.setInt(1, idAlbum);
+            aggiornaLista.setInt(1, acquisto.getCodice());
 
             contocliente.setInt(1, saldoclient.getConto());
             contocliente.setInt(2, id_cliente);
 
             contovenditore.setInt(1, saldovend.getConto());
             contovenditore.setInt(2, vend.getId());
-
-            //int c1;
-            //c1 = aggiornaLista.executeUpdate();
+            
+            //non riesco a trovare l'errore per cui "c1" "non funziona"
+            int c1;
+            c1 = aggiornaLista.executeUpdate();
             int c2;
             c2 = contocliente.executeUpdate();
             int c3;
             c3 = contovenditore.executeUpdate();
-            // uso la variabile ok per vedere se gli aggiornamenti sono effettvi c1 != 1 || 
-            if (c2 != 1 || c3 != 1 || (ok != true)) {
+            // uso la variabile ok per vedere se gli aggiornamenti sono effettvi  
+            if (c1 != 1 || c2 != 1 || c3 != 1 || (ok != true)) {
+                ok = false;
                 conn.rollback();
             }
             conn.commit();
         } catch (SQLException e) {
             try {
                 conn.rollback();
+                ok = false;
             } catch (SQLException e1) {
 
             }
             try {
                 conn.rollback();
+                ok = false;
             } catch (SQLException e2) {
 
             }
@@ -669,5 +673,48 @@ public class MoosecaFactory {
             conn.setAutoCommit(true);
             conn.close();
         }
+        return ok;
+    }
+    
+    //M5 lista musica filtrata
+    public ArrayList<Mooseca> getMusica(String dato)
+    {
+        ArrayList<Mooseca> listaMusica = new ArrayList<>();
+        
+        try
+        {
+            Connection conn = DriverManager.getConnection(connectionString, "username", "password");
+            String query = "select * from album where LOWER(nome_album) LIKE ? OR LOWER(tipo) LIKE ? OR LOWER(autore) LIKE ?";         
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            dato = "%"+dato+"%";
+            stmt.setString(1, dato);            
+            stmt.setString(2, dato);
+            stmt.setString(3, dato);
+            ResultSet set = stmt.executeQuery();
+            
+            while(set.next())
+            {
+                Mooseca album = new Mooseca();
+                album.setCodice(set.getInt("id_album"));
+                album.setNomeOgg(set.getString("nome_album"));
+                album.setCoverLink(set.getString("coverlink"));
+                album.setTipo(set.getString("tipo"));
+                album.setAutore(set.getString("autore"));
+                album.setPrezzo(set.getInt("prezzo"));
+                //settaggio venditore
+                int id_vend = set.getInt("id_vend");
+                album.setVend(getVenditorePerId(id_vend));
+
+                listaMusica.add(album);
+            }
+            
+            stmt.close();
+            conn.close();
+        }
+        catch(SQLException e)
+        {}
+        
+        return listaMusica;
     }
 }

@@ -56,10 +56,10 @@ public class ClientServlet extends HttpServlet {
             if (soldi > 0) {
 
                 MoosecaFactory.getInstance().carica(id, soldi);
-                request.setAttribute("accredito", "Accredito effettuato");
+                request.setAttribute("accredito", " effettuata");
                 request.getRequestDispatcher("cliente.jsp").forward(request, response);
             } else {
-                request.setAttribute("accredito", "Accredito non effettuato");
+                request.setAttribute("accredito", " non effettuata");
                 request.getRequestDispatcher("cliente.jsp").forward(request, response);
             }
 
@@ -77,26 +77,26 @@ public class ClientServlet extends HttpServlet {
                     name = name.replaceAll(" ", "+");
                     autor = autor.replaceAll(" ", "+");
                     // imposto una variabile carrello che contiene i dati per la visualizzazione
-                    request.setAttribute("carrello", "<div>\n" + "<a href=\"cliente.html?nomeAlbum=" + name + "&tipoAlbum=" + album_acquisto.getTipo() + "&prezzoAlbum=" + album_acquisto.getPrezzo() + "&autoreAlbum=" + autor + "&album=" +album_acquisto.getCodice() + "\">" + "<input type=\"submit\" id=\"acquista\" name=\"acquista\" value=\"Acquista\"/></div>");
+                    request.setAttribute("carrello", "<div>\n" + "<a href=\"cliente.html?nomeAlbum=" + name + "&tipoAlbum=" + album_acquisto.getTipo() + "&prezzoAlbum=" + album_acquisto.getPrezzo() + "&autoreAlbum=" + autor + "&album=" + album_acquisto.getCodice() + "\">" + "<input type=\"submit\" id=\"acquista\" name=\"acquista\" value=\"Acquista\"/></div>");
 
                     request.getRequestDispatcher("riepilogo.jsp").forward(request, response);
                 }
             } catch (Exception e) {
             }
-        } else if (session.getAttribute("loggedClient") != null && request.getParameter("nomeAlbum") != null && request.getParameter("tipoAlbum") != null && request.getParameter("prezzoAlbum") != null && request.getParameter("autoreAlbum") != null) {
+        } else if (session.getAttribute("loggedClient") != null  && request.getParameter("nomeAlbum") != null && request.getParameter("tipoAlbum") != null && request.getParameter("prezzoAlbum") != null && request.getParameter("autoreAlbum") != null && request.getParameter("album") != null) {
 
             Users utente = (Users) session.getAttribute("cliente");
-            Integer conto = utente.getConto().getConto();
-            Integer prezzo = Integer.parseInt(request.getParameter("prezzoAlbum"));
-
+            //Integer conto = utente.getConto().getConto();
+            //Integer prezzo = Integer.parseInt(request.getParameter("prezzoAlbum"));
+            Boolean ok = false;
             //Mooseca album = (Mooseca) request.getAttribute("album");
             Mooseca album = MoosecaFactory.getInstance().getMusicaId(Integer.parseInt(request.getParameter("album")));
             try {
-                MoosecaFactory.getInstance().acquisto(utente.getId(), album.getCodice());
+                ok = MoosecaFactory.getInstance().acquisto(utente.getId(), album.getCodice());
             } catch (SQLException e) {
             }
 
-            if (conto < prezzo) {
+            if (!ok) {
                 request.setAttribute("messaggio", "Attenzione, il suo saldo non è sufficiente per complettare l'acquisto dell'album: " + request.getParameter("nomeAlbum") + " di " + request.getParameter("autoreAlbum"));
             } else {
                 request.setAttribute("messaggio", "Il suo acquisto è andato a buon fine: " + request.getParameter("nomeAlbum") + " di " + request.getParameter("autoreAlbum") + ". Il suo saldo residuo è di " + utente.getConto().getConto() + " £.");

@@ -15,6 +15,9 @@
         <link href="css/style.css" rel="stylesheet" type="text/css" media="screen"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cliente</title>
+        <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+        <script type="text/javascript" src="js/newjavascript.js"></script>
+
     </head>
     <body>
         <div id="pag">
@@ -28,12 +31,15 @@
                         Benvenuto ${cliente.nome} ${cliente.cognome}.
                     </p>
                     <p>
-                        Qui puoi trovare tutta la nostra musica!
+                        Qui puoi trovare tutta la nostra musica!<br/>
+                        <br/>
+                        <label class="titolo" for="filtro">Filtra</label>
+                        <input type="text" id="filtro" name="filtro" size="32"/>
                     </p>
                 </div>
                 <div>
                     <jsp:include page="parts/vetrina.jsp"/>
-                </div>     
+                </div>
             </div>
             <jsp:include page="parts/footer.jsp"/>
         </div>         
