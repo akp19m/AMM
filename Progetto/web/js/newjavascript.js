@@ -17,8 +17,6 @@ $(document).ready(function () {
                         aggiornaListaMusica(data)
                     }
                 });
-
-        // Funzione che viene richiamata in caso di successo
         function aggiornaListaMusica(listaMusica) {
          
             $(".tab").show();
@@ -26,7 +24,7 @@ $(document).ready(function () {
 
             var table = document.getElementsByClassName("tab");
 
-            var controllo = 0; // variabile di controllo per capire se trovo o meno risultati
+            var controllo = 0;
 
             for (var album in listaMusica) {
                 controllo = 1;
@@ -40,7 +38,6 @@ $(document).ready(function () {
                 var column5 = row.insertCell();
                 var column6 = row.insertCell();
 
-                // inserisco i campi per ogni cella
                 column1.innerHTML = listaMusica[album].nomeOgg;
                 column2.innerHTML = "<img  title=\"" + listaMusica[album].nomeOgg + "\"src=\"/img/" + listaMusica[album].coverLink + "\" alt=\"" + listaMusica[album].nomeOgg + "\" width=\"80\ height=\"80\">";
                 column3.innerHTML = listaMusica[album].autore;
